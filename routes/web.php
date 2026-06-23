@@ -1,19 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Idea;
 
 Route::get("/", function () {
-    $ideas = session()->get('ideas', []);
+    $ideas = Idea::query()
+        ->when(request('state'), function ($query, $state) {
+            $query->where('state', $state);
+        })
+        ->get();
+
 
     return view('ideas', [
-        'ideas' => $ideas
+        'ideas' => $ideas,
     ]);
 });
 
 Route::post("/ideas", function () {
-    $idea = request("idea");
 
-    session()->push('ideas', $idea);
+    Idea::create([
+        'description' => request('idea'),
+        'state' => 'pending',
+    ]);
 
     return redirect("/");
 });
