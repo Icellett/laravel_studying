@@ -11,3 +11,4 @@ Route::get("/ideas/{idea}", [IdeaController::class, "show"]);
 Route::get("/ideas/{idea}/edit", [IdeaController::class, "edit"]);
 Route::patch("/ideas/{idea}", [IdeaController::class, "update"]);
 Route::delete("/ideas/{idea}", [IdeaController::class, "destroy"]);
+Route::redirect("/", "/ideas");
