@@ -7,15 +7,11 @@
             <ul
                 tabindex="-1"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                <li><a>Item 1</a></li>
-                <li>
-                    <a>Parent</a>
-                    <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                </li>
-                <li><a>Item 3</a></li>
+                <li><a href="/ideas">Home</a></li>
+                <li><a href="/ideas/create">New Idea</a></li>
+                @can('view-admin')
+                    <li><a href="/admin">Admin</a></li>
+                @endcan
             </ul>
         </div>
         <a class="btn btn-ghost text-xl" href="/">Idea</a>
@@ -24,6 +20,9 @@
         <ul class="menu menu-horizontal px-1">
             <li><a href="/ideas">Home</a></li>
             <li><a href="/ideas/create">New Idea</a></li>
+            @can('view-admin')
+                <li><a href="/admin">Admin</a></li>
+            @endcan
         </ul>
     </div>
     <div class="navbar-end space-x-2">
@@ -37,6 +36,9 @@
         @else
             <a class="btn btn-primary" href="/register">Register</a>
             <a class="btn btn-secondary" href="/login">Log In</a>
+            @can('view-admin')
+                <a href="/admin">Admin</a>
+            @endcan
         @endauth
     </div>
 </div>

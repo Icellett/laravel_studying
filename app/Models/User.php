@@ -30,8 +30,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->id == 1;
     }
 }
