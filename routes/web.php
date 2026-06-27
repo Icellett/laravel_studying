@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SessionsController;
 use Illuminate\Support\Facades\Gate;
 
-//Route::redirect("/", "/ideas");
+Route::redirect("/", "/ideas");
 
 Route::middleware('auth')->group(function ()
 {
@@ -31,10 +31,5 @@ Route::middleware('guest')->group(function ()
 
 });
 
-Route::get('/admin', function () {
-    Gate::authorize('view-admin');
-
-    return 'Private admin only area';
-});
 
 
